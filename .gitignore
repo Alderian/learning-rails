@@ -1,0 +1,4 @@
+*.log
+tmp/**/*
+nbproject
+.DS_Store

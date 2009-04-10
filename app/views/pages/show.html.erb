@@ -1,0 +1,66 @@
+<p>
+  <b>Name:</b>
+  <%=h @page.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @page.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @page.body %>
+</p>
+
+<p>
+  <b>Admin?</b><br />
+  <%= @page.admin? ? "TRUE" : "FALSE" %>
+</p>
+
+<% unless !@parent %>
+  <p>
+    <b>Parent Page</b><br />
+    <%= link_to @parent.navlabel, @parent %> (click to show)
+  </p>
+<% end %>
+
+<p>
+  <b>Position</b><br />
+  <%= @page.position %>
+</p>
+
+<p>
+  <b>Nav Label</b><br />
+  <%= @page.navlabel %>
+</p>
+
+<% unless @subpages.empty? %>
+  <p>
+    <b>Sub Pages</b>
+  </p>
+  <ul>
+    <% for page in @subpages %>
+      <li><%= link_to page.navlabel, page %> (click to show)</li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>
+  <b>Redirect?</b><br />
+  <%= @page.redirect %>
+</p>
+
+<p>
+  <b>Action</b><br />
+  <%= @page.action_name %>
+</p>
+
+<p>
+  <b>Controller</b><br />
+  <%= @page.controller_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
